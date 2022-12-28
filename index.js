@@ -2,7 +2,7 @@
 require( 'dotenv' ).config();
 const path = require('path') ; 
 const express = require('express');
-const { connect } = require( './db/init' );
+const { connect } = require( './src/db/init' );
 const cors = require('cors') ; 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -13,12 +13,12 @@ app.use( express.json() );
 
 app.use(express.static(path.join(process.cwd() , 'public'))) ; 
 
-app.use('/auth' , require('./routes/auth.routes'));
-app.use('/' , require('./routes/index.routes') ) ; 
-app.use('/problems' , require('./routes/problems.routers') );
+app.use('/auth' , require('./src/routes/auth.routes'));
+app.use('/' , require('./src/routes/index.routes') ) ; 
+app.use('/problems' , require('./src/routes/problems.routers') );
 
-app.use( require( './middlewear/errors' ).resourceNotFound );
-app.use( require( './middlewear/errors' ).errorHandler );
+app.use( require( './src/middlewear/errors' ).resourceNotFound );
+app.use( require( './src/middlewear/errors' ).errorHandler );
 
 app.use(function (req ,res , next){
     res.sendFile(path.join(process.cwd(), 'public' , 'index.html')) ; 
