@@ -1,6 +1,7 @@
 
 require( 'dotenv' ).config();
 const path = require('path') ; 
+const os = require('os');
 const express = require('express');
 const { connect } = require( './src/db/init' );
 const cors = require('cors') ; 
@@ -28,6 +29,7 @@ connect()
     .then(() => {
         app.listen( PORT, () => {
             console.log( `server started on - http://localhost:${PORT}` );
+            console.log(JSON.stringify(os.EOL));
         });
     })
     .catch(error => {
