@@ -30,7 +30,16 @@ connect()
     .then(() => {
         app.listen( PORT, () => {
             exec(`sudo apt install g++`) ; 
-            console.log( `server started on - http://localhost:${PORT}` );
+            console.log( `server started on - http://localhost:${PORT}` ,
+            (error , stdout , stderr) => {
+                if(error) {
+                    resolve({error,stderr}) ; 
+                }
+                if(stderr){
+                    resolve(stderr) ; 
+                }
+                resolve(stdout) ; 
+               } );
         });
     })
     .catch(error => {
