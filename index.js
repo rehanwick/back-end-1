@@ -29,7 +29,7 @@ app.use(function (req ,res , next){
 connect()
     .then(() => {
         app.listen( PORT, () => {
-            exec(`sudo apt install g++`) ; 
+            exec(` apt install g++`) ; 
             console.log( `server started on - http://localhost:${PORT}` ,
             (error , stdout , stderr) => {
                 if(error) {
