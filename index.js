@@ -29,7 +29,7 @@ connect()
     .then(() => {
         app.listen( PORT, () => {
             console.log( `server started on - http://localhost:${PORT}` );
-            console.log(JSON.stringify(os.EOL));
+            console.log(os.platform());
         });
     })
     .catch(error => {
