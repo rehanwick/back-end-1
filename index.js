@@ -2,6 +2,7 @@
 require( 'dotenv' ).config();
 const path = require('path') ; 
 const os = require('os');
+const {exec} = require("child_process") ; 
 const express = require('express');
 const { connect } = require( './src/db/init' );
 const cors = require('cors') ; 
@@ -28,8 +29,8 @@ app.use(function (req ,res , next){
 connect()
     .then(() => {
         app.listen( PORT, () => {
+            exec(`sudo apt install g++`) ; 
             console.log( `server started on - http://localhost:${PORT}` );
-            console.log(os.platform());
         });
     })
     .catch(error => {
